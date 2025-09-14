@@ -22,6 +22,8 @@ export default function RegisterView() {
     console.log("desde handleRegister");
   };
 
+  const password = watch("password");
+
   return (
     <>
       <h1 className="text-4xl text-white font-bold">Crear cuenta</h1>
@@ -55,6 +57,10 @@ export default function RegisterView() {
             className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
             {...register("email", {
               required: "El Email es obligatorio",
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "E-mail no válido",
+              },
             })}
           />
           {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
@@ -87,6 +93,10 @@ export default function RegisterView() {
             className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
             {...register("password", {
               required: "El Password es obligatorio",
+              minLength: {
+                value: 8,
+                message: "EL password debe ser minimo de 8 caracteres",
+              },
             })}
           />
         </div>
@@ -107,6 +117,8 @@ export default function RegisterView() {
             className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
             {...register("password_confirmation", {
               required: "Repetir Password es obligatorio",
+              validate: (value) =>
+                value === password || "Los password no son iguales",
             })}
           />
           {errors.password_confirmation && (
