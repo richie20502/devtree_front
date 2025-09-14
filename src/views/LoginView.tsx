@@ -1,5 +1,12 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 export default function LoginView() {
-  return <div className="text-6xl">LoginViewkjkljlkjkljlkljkllkj</div>;
+  return (
+    <>
+      <div>LoginViewkjkljlkjkljlkljkllkj</div>
+      <nav>
+        <Link to="/auth/register">No Tienes Cuenta? Crea una aquí</Link>
+      </nav>
+    </>
+  );
 }
