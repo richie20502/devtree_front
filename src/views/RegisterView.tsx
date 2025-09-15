@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import type { RegisterForm } from "../types";
 import ErrorMessage from "../components/ErrorMessage";
 
 export default function RegisterView() {
-  const initialValues = {
+  const initialValues: RegisterForm = {
     name: "",
     email: "",
     handle: "",
@@ -15,14 +16,13 @@ export default function RegisterView() {
     watch,
     handleSubmit,
     formState: { errors },
-  } = useForm({ defaultValues: initialValues });
-
-  console.log(errors);
-  const handleRegister = () => {
-    console.log("desde handleRegister");
-  };
+  } = useForm<RegisterForm>({ defaultValues: initialValues });
 
   const password = watch("password");
+
+  const handleRegister = (formData: RegisterForm) => {
+    console.log(formData);
+  };
 
   return (
     <>
