@@ -16,7 +16,7 @@ export default function RegisterView() {
     watch,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterForm>({ defaultValues: initialValues });
+  } = useForm({ defaultValues: initialValues });
 
   const password = watch("password");
 
